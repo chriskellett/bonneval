@@ -59,27 +59,27 @@
 <!-- default white nav -->
   <div data-animation="over-left" class="nav cc--no-gradient w-nav" data-easing="ease-in-out" data-collapse="medium" data-w-id="b6e68bfe-5fbc-b401-892c-2a1d9d41c597" role="banner" data-no-scroll="1" data-duration="400" data-doc-height="1">
     <div class="nav__decor-parent">
-      <div class="nav__decor-wrap cc--invert"><img src="images/Flower-Decor-Icon.svg" loading="lazy" width="15" alt="" class="nav__flower-icon">
-        <div class="nav__decore__line"></div><img src="images/Flower-Decor-Icon.svg" loading="lazy" width="15" alt="" class="nav__flower-icon">
+      <div class="nav__decor-wrap cc--invert"><img src="{{ 'Flower-Decor-Icon.svg' | asset_url }}" loading="lazy" width="15" alt="" class="nav__flower-icon">
+        <div class="nav__decore__line"></div><img src="{{ 'Flower-Decor-Icon.svg' | asset_url }}" loading="lazy" width="15" alt="" class="nav__flower-icon">
       </div>
     </div>
     <div class="nav__bg"></div>
     <div class="nav__container w-container">
       <div class="mobile-nav-cover"></div>
-      <div class="nav__mobile-button cc--invert w-nav-button"><img src="images/Burger-Lines.svg" width="16" alt=""></div>
-      <a href="index.html" class="nav__ligo-link cc--mobile page-fade w-nav-brand"><img src="images/Bon-Logo-White.svg" loading="lazy" alt=""></a>
-      <a href="#" class="nav__link cc--mobile cc--white w-nav-link">Find Us</a>
+      <div class="nav__mobile-button cc--invert w-nav-button"><img src="{{ 'Burger-Lines.svg' | asset_url }}" width="16" alt=""></div>
+      <a href="/" class="nav__ligo-link cc--mobile page-fade w-nav-brand"><img src="{{ 'Bon-Logo-White.svg' | asset_url }}" loading="lazy" alt=""></a>
+      <a href="#" class="nav__link cc--mobile cc--white w-nav-link">{{ 'founders.A_0' | t }}</a>
       <nav role="navigation" class="nav__menu w-nav-menu">
         <div class="nav__menu-buttons cc--mobile-top hide">
-          <a href="our-water.html" class="nav__link cc--margin-right page-fade cc--white black w-nav-link">Our Water</a>
-          <a href="our-origin.html" class="nav__link cc--margin-right page-fade cc--white black w-nav-link">Our Origins</a>
-          <a href="founders.html" aria-current="page" class="nav__link page-fade cc--white black w-nav-link w--current">Our Founders</a>
+          <a href="/pages/our-water" class="nav__link cc--margin-right page-fade cc--white black w-nav-link">{{ 'founders.A_1' | t }}</a>
+          <a href="/pages/our-origin" class="nav__link cc--margin-right page-fade cc--white black w-nav-link">{{ 'founders.A_2' | t }}</a>
+          <a href="/pages/founders" aria-current="page" class="nav__link page-fade cc--white black w-nav-link w--current">{{ 'founders.A_3' | t }}</a>
         </div>
-        <a href="index.html" class="nav__ligo-link page-fade w-nav-brand"><img src="images/Bon-Logo-White.svg" loading="lazy" alt=""></a>
+        <a href="/" class="nav__ligo-link page-fade w-nav-brand"><img src="{{ 'Bon-Logo-White.svg' | asset_url }}" loading="lazy" alt=""></a>
         <div class="nav__menu-buttons cc--mobile-bottom hide">
           <div class="nav__link-spacer"></div>
-          <a href="sustainability.html" class="nav__link page-fade cc--white black w-nav-link">Sustainability</a>
-          <a href="find-us.html" class="nav__link cc--margin-left page-fade cc--white black w-nav-link">Find Us</a>
+          <a href="/pages/sustainability" class="nav__link page-fade cc--white black w-nav-link">{{ 'founders.A_4' | t }}</a>
+          <a href="/pages/find-us" class="nav__link cc--margin-left page-fade cc--white black w-nav-link">{{ 'founders.A_5' | t }}</a>
         </div>
         <a href="#" class="nav__mobile-close-button w-inline-block">
           <div class="nav__mobile-close-button__line"></div>
