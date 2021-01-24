@@ -1,67 +1,72 @@
+{%- for block in section.blocks -%}
+  {%- unless block.settings.target_page == page.handle -%}
+    {% continue %}
+  {%- endunless -%}
 
+  {%- assign main = block.settings -%}
 
-      <div class="standard-hero cc--image" style="background-image: url({{ section.settings.hero_image | img_url: 'large' }})">
-        <div class="container standout">
-          <h1 class="headline-1 cc--standard-page">{{ section.settings.page_title }}</h1>
-          <p class="hero__p">{{ section.settings.page_description }}</p>
-        </div>
-        <div data-animation="over-left" class="nav cc--no-gradient w-nav" data-easing="ease-in-out" data-collapse="medium" data-w-id="b6e68bfe-5fbc-b401-892c-2a1d9d41c597" role="banner" data-no-scroll="1" data-duration="400" data-doc-height="1">
-          <div class="nav__decor-parent">
-            <div class="nav__decor-wrap cc--invert"><img src="{{ 'Flower-Decor-Icon.svg' | asset_url }}" loading="lazy" width="15" alt="" class="nav__flower-icon">
-              <div class="nav__decore__line"></div><img src="{{ 'Flower-Decor-Icon.svg' | asset_url }}" loading="lazy" width="15" alt="" class="nav__flower-icon">
-            </div>
-          </div>
-          <div class="nav__bg"></div>
-          <div class="nav__container w-container">
-            <div class="mobile-nav-cover"></div>
-            <div class="nav__mobile-button cc--invert w-nav-button"><img src="{{ 'Burger-Lines.svg' | asset_url }}" width="16" alt=""></div>
-            <a href="/" class="nav__ligo-link cc--mobile page-fade w-nav-brand"><img src="{{ 'Bon-Logo-White.svg' | asset_url }}" loading="lazy" alt=""></a>
-            <a href="#" class="nav__link cc--mobile cc--white w-nav-link">Find Us</a>
-            <nav role="navigation" class="nav__menu w-nav-menu">
-              <div class="nav__menu-buttons cc--mobile-top hide">
-                <a href="/pages/our-water" class="nav__link cc--margin-right page-fade cc--white black w-nav-link">Our Water</a>
-                <a href="/pages/our-origin" class="nav__link cc--margin-right page-fade cc--white black w-nav-link">Our Origins</a>
-                <a href="/pages/founders" class="nav__link page-fade cc--white black w-nav-link">Our Founders</a>
-              </div>
-              <a href="/" class="nav__ligo-link page-fade w-nav-brand"><img src="{{ 'Bon-Logo-White.svg' | asset_url }}" loading="lazy" alt=""></a>
-              <div class="nav__menu-buttons cc--mobile-bottom hide">
-                <div class="nav__link-spacer"></div>
-                <a href="/pages/sustainability" class="nav__link page-fade cc--white black w-nav-link">Sustainability</a>
-                <a href="/pages/find-us" class="nav__link cc--margin-left page-fade cc--white black w-nav-link">Find Us</a>
-              </div>
-              <a href="#" class="nav__mobile-close-button w-inline-block">
-                <div class="nav__mobile-close-button__line"></div>
-                <div class="nav__mobile-close-button__line cc--vertical"></div>
-              </a>
-            </nav>
-          </div>
-        </div>
-      </div>
-    
+  {%- capture nav_color -%}
+	{{- main.toggle_nav -}}
+  {%- endcapture -%}
+
+  {%- capture hero -%}
+	{%- if main.hero_image -%}
+	    {{- main.hero_image | img_url: 'master' -}}
+	{%- endif -%}
+  {%- endcapture -%}
+  {%- capture description_text -%}
+    {{- main.page_description -}}
+  {%- endcapture -%}
+  
+  {%- assign main = nil -%}
+{%- endfor -%}
+
+{%- if nav_color == "true" -%}
+<p>I'm the black Nav</p>
+<!-- Black nav here	 -->
+{%- else -%}
+<p>I'm the white Nav</p>
+<!-- default white nav -->
+{%- endif -%}
+
+<div class="standard-hero cc--image {% if hero %}standard-hero--with-image{%- endif -%}" {% if hero -%}style="background-image: url({{ hero }})"{%- endif -%}>
+  <div class="container">
+    <h1 class="headline-1 cc--standard-page">{{ page.title }}</h1>
+    {% if description_text %}<p class="hero__p">{{ description_text }}</p>{%- endif -%}
+  </div>
+</div>
+
 
 {% schema %}
 {
   "name": "custom-hero",
   "class": "custom-section",
   "tag": "div",
-  "settings": [
-    {
-      "type": "text",
-      "id": "page_title",
-      "label": "page-title",
-      "default": "Page Title Goes Here"
-    },
-    {
-      "type": "textarea",
-      "id": "page_description",
-      "label": "page-description",
-      "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique."
-    },
-    {
-      "type": "image_picker",
-      "id": "hero_image",
-      "label": "hero-image"
-    }
-  ]
+  "blocks": [{
+    "type": "config",
+    "name": "Page Hero Picker",
+    "settings": [ {
+		"type": "checkbox",
+		"id": "toggle_nav",
+		"default": false,
+        "label": "Check this box to use black navigation text"
+      }, {
+        "type": "page",
+        "id": "target_page",
+        "label": "Which page is this config for?"
+      },
+      {
+        "type": "textarea",
+        "id": "page_description",
+        "label": "page-description",
+        "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique."
+      },
+      {
+        "type": "image_picker",
+        "id": "hero_image",
+        "label": "hero-image"
+      }
+    ]
+  }]
 }
 {% endschema %}
