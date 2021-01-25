@@ -90,8 +90,9 @@
   </div>
 {%- endif -%}
 
-<div class="standard-hero cc--image {% if hero %}standard-hero--with-image{%- endif -%}" {% if hero -%}style="background-image: url({{ hero }})"{%- endif -%}>
-  <div class="container">
+
+<div class="standard-hero  {% if hero != blank %}cc--image standard-hero--with-image{%- endif -%}" {% if hero != blank -%}style="background-image: url({{ hero }})"{%- endif -%}>
+  <div class="container {% if hero != blank %} standout {%- endif -%}">
     <h1 class="headline-1 cc--standard-page">{{ page.title }}</h1>
     {% if description_text %}<p class="hero__p">{{ description_text }}</p>{%- endif -%}
   </div>
