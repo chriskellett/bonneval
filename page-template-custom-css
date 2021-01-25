@@ -1,0 +1,10 @@
+  <style>
+@media screen and (max-width: 991px){
+	.w--nav-link-open[style] {
+    	color: rgb(51, 51, 51) !important;
+    }
+    }
+.hideme {
+display:none !important;
+}
+</style>
