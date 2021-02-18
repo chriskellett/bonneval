@@ -1,3 +1,4 @@
+<!-- Footer code START -->
 <div class="footer__copy">
    © Bonneval <script language="javascript" type="text/javascript">
       var today = new Date()
@@ -5,3 +6,4 @@
       document.write(year)
    </script>
 </div>
+<!-- Footer code END --> 
